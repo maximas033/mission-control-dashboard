@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Mission Control • Billing</title><link rel='stylesheet' href='styles.css'></head><body><div class='app'><aside class='panel sidebar'><div class='brand'>Mission Control</div><div class='muted'>Standalone Project</div><nav class='nav'><a href='/'>Dashboard Overview</a><a href='/tasks'>Tasks</a><a class='active' href='/billing'>Billing</a><a href='/schedule'>Schedule</a><a href='/agents'>Agents</a><a href='/settings'>Settings</a></nav></aside><main class='main'><section class='panel top'><h1>Billing</h1><div class='muted'>Day-by-day cost estimate</div></section><section class='panel card'><div class='row'><h3 style='margin:0'>Estimator Settings</h3><span class='muted' style='font-size:12px'>Per 1M tokens</span></div><div class='grid' style='grid-template-columns:1fr 1fr;margin-top:10px'><div><label class='muted'>Input $ / 1M</label><input id='inRate' type='number' step='0.01' value='3' style='width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff3;color:var(--text)'></div><div><label class='muted'>Output $ / 1M</label><input id='outRate' type='number' step='0.01' value='15' style='width:100%;margin-top:6px;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff3;color:var(--text)'></div></div><div class='grid' style='grid-template-columns:1fr 1fr;margin-top:10px'><div class='item'><div class='muted'>Live Tokens In</div><b id='tokensIn'>0</b></div><div class='item'><div class='muted'>Live Tokens Out</div><b id='tokensOut'>0</b></div></div><div class='muted' style='font-size:12px;margin-top:8px'>These are estimates. Replace rates with your actual provider pricing.</div></section><section class='panel card'><div class='row'><h3 style='margin:0'>Daily Cost (Last 7 Days)</h3><b id='totalCost'>$0.00</b></div><div id='chart' style='display:flex;gap:10px;align-items:flex-end;height:210px;margin-top:14px'></div></section><section class='panel card'><h3 style='margin:0'>Breakdown</h3><div style='overflow:auto;margin-top:10px'><table style='width:100%;border-collapse:collapse;font-size:14px'><thead><tr><th style='text-align:left;padding:8px;border-bottom:1px solid var(--line)'>Day</th><th style='text-align:right;padding:8px;border-bottom:1px solid var(--line)'>Input Tokens</th><th style='text-align:right;padding:8px;border-bottom:1px solid var(--line)'>Output Tokens</th><th style='text-align:right;padding:8px;border-bottom:1px solid var(--line)'>Cost</th></tr></thead><tbody id='rows'></tbody></table></div></section></main></div><script src='app.js'></script><script>
+const sample=[
+  {d:'Mon',inT:98000,outT:4200},
+  {d:'Tue',inT:121000,outT:5100},
+  {d:'Wed',inT:87000,outT:3900},
+  {d:'Thu',inT:146000,outT:7200},
+  {d:'Fri',inT:111000,outT:5000},
+  {d:'Sat',inT:76000,outT:3300},
+  {d:'Sun',inT:94000,outT:4100}
+];
+function money(n){return '$'+n.toFixed(2)}
+function render(){
+  const inRate=Number(document.getElementById('inRate').value)||0;
+  const outRate=Number(document.getElementById('outRate').value)||0;
+  const costs=sample.map(s=>((s.inT/1e6)*inRate)+((s.outT/1e6)*outRate));
+  const max=Math.max(...costs,0.01);
+  const chart=document.getElementById('chart'); chart.innerHTML='';
+  const rows=document.getElementById('rows'); rows.innerHTML='';
+  let total=0;
+  sample.forEach((s,i)=>{
+    const c=costs[i]; total+=c;
+    const h=Math.max(12,(c/max)*160);
+    const bar=document.createElement('div'); bar.style.flex='1';
+    bar.innerHTML=`<div style="height:${h}px;border-radius:10px;background:linear-gradient(180deg,#60a5fa,#2563eb)"></div><div style="text-align:center;font-size:12px;margin-top:6px" class="muted">${s.d}</div><div style="text-align:center;font-size:12px">${money(c)}</div>`;
+    chart.appendChild(bar);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td style='padding:8px;border-bottom:1px solid var(--line)'>${s.d}</td><td style='padding:8px;border-bottom:1px solid var(--line);text-align:right'>${s.inT.toLocaleString()}</td><td style='padding:8px;border-bottom:1px solid var(--line);text-align:right'>${s.outT.toLocaleString()}</td><td style='padding:8px;border-bottom:1px solid var(--line);text-align:right'>${money(c)}</td>`;
+    rows.appendChild(tr);
+  });
+  document.getElementById('totalCost').textContent=money(total);
+}
+['inRate','outRate'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+render();
+</script><script src='live.js'></script></body></html>

@@ -1,0 +1,156 @@
+{
+  "updatedAt": "2026-02-23T20:27:40.498225",
+  "agent": {
+    "name": "OpenClaw Main Agent",
+    "online": true
+  },
+  "currentActivity": {
+    "title": "Working on Mission Control upgrades",
+    "detail": "Implementing workshop modal + Obsidian journal sync"
+  },
+  "usage": {
+    "fiveHourLeft": 67,
+    "dayLeft": 90,
+    "tokensIn": 86463,
+    "tokensOut": 147
+  },
+  "agents": [
+    {
+      "id": "main",
+      "workspace": "/Users/maximfedorets/.openclaw/workspace",
+      "sessions": 1,
+      "status": "online"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Mission Control App",
+      "state": "in-progress",
+      "owner": "Assistant",
+      "updated": "today"
+    },
+    {
+      "name": "ME3D Website",
+      "state": "done",
+      "owner": "Assistant",
+      "updated": "today"
+    },
+    {
+      "name": "Security Audit",
+      "state": "done",
+      "owner": "Assistant",
+      "updated": "today"
+    }
+  ],
+  "workshop": [
+    {
+      "title": "Mission Control UX polish",
+      "state": "in-progress",
+      "owner": "Assistant",
+      "updated": "today",
+      "progress": 72,
+      "description": "Upgrade glass UI, add settings controls, and improve activity density.",
+      "created": "2026-02-22",
+      "started": "2026-02-22",
+      "finished": "",
+      "log": [
+        "Created standalone project",
+        "Added glassmorphism styles",
+        "Added settings page and icon theme toggle",
+        "Added live widgets"
+      ]
+    },
+    {
+      "title": "ME3D SEO location pages",
+      "state": "done",
+      "owner": "Assistant",
+      "updated": "today",
+      "progress": 100,
+      "description": "Published Lakewood and Tacoma SEO pages + reviews.",
+      "created": "2026-02-22",
+      "started": "2026-02-22",
+      "finished": "2026-02-22",
+      "log": [
+        "Drafted pages",
+        "Added metadata",
+        "Deployed to Vercel"
+      ]
+    },
+    {
+      "title": "Live billing graph",
+      "state": "done",
+      "owner": "Assistant",
+      "updated": "today",
+      "progress": 100,
+      "description": "Billing page supports per-day graph and token-rate estimator.",
+      "created": "2026-02-22",
+      "started": "2026-02-22",
+      "finished": "2026-02-22",
+      "log": [
+        "Added cost controls",
+        "Added 7-day chart",
+        "Added breakdown table"
+      ]
+    }
+  ],
+  "obsidian": {
+    "path": "/Users/maximfedorets/Desktop/OBSIDIAN VAULT"
+  },
+  "journal": [
+    {
+      "title": "OpenClaw Control Center",
+      "path": "99-System/OpenClaw Control Center.md"
+    },
+    {
+      "title": "Resource - Command Cheatsheet",
+      "path": "04-Resources/Resource - Command Cheatsheet.md"
+    },
+    {
+      "title": "Resources Index",
+      "path": "04-Resources/Resources Index.md"
+    },
+    {
+      "title": "Area - Security & Reliability",
+      "path": "03-Areas/Area - Security & Reliability.md"
+    },
+    {
+      "title": "Area - Productivity System",
+      "path": "03-Areas/Area - Productivity System.md"
+    },
+    {
+      "title": "Areas Index",
+      "path": "03-Areas/Areas Index.md"
+    },
+    {
+      "title": "Project - OpenClaw Automation Stack",
+      "path": "02-Projects/Project - OpenClaw Automation Stack.md"
+    },
+    {
+      "title": "Project - Task Dashboard",
+      "path": "02-Projects/Project - Task Dashboard.md"
+    }
+  ],
+  "weeklyRecap": {
+    "completed": 2,
+    "inProgress": 1,
+    "upcoming": 0,
+    "summary": "Major ops dashboards shipped; SEO + automation maintenance completed."
+  },
+  "scheduled": [
+    {
+      "name": "Security status monitor",
+      "time": "Hourly",
+      "channel": "Telegram"
+    },
+    {
+      "name": "Daily progress report",
+      "time": "5:00 AM",
+      "channel": "Telegram"
+    },
+    {
+      "name": "End-of-day report",
+      "time": "9:00 PM",
+      "channel": "Telegram"
+    }
+  ]
+}
