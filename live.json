@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-23T20:27:40.498225",
+  "updatedAt": "2026-02-23T20:37:55.190026",
   "agent": {
     "name": "OpenClaw Main Agent",
     "online": true
@@ -11,8 +11,8 @@
   "usage": {
     "fiveHourLeft": 67,
     "dayLeft": 90,
-    "tokensIn": 86463,
-    "tokensOut": 147
+    "tokensIn": 1434,
+    "tokensOut": 92
   },
   "agents": [
     {
